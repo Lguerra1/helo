@@ -1,3 +1,4 @@
+const users = require('./users')
 let id = 1
 module.exports = {
 
@@ -25,6 +26,12 @@ module.exports = {
             res.status(500).send('Unauthorized')
         }
     },
+
+    logout: (req, res, next) => {
+        const { session } = req;
+        session.destroy();
+        res.status(200).send(session.user)
+    }
 
 
 }

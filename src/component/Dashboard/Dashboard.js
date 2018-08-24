@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
+    constructor(){
+        super()
+        this.state = {
+            posts: []
+        }
+    }
     render(){
         return(
             <div>
@@ -12,3 +19,12 @@ export default class Dashboard extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    const {userId} = state
+    return {
+        userId
+    }
+}
+
+export default connect (mapStateToProps) (Dashboard)
